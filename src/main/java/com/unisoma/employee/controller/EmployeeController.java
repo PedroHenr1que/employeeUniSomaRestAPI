@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,10 +65,11 @@ public class EmployeeController {
         EmployeeNewSalaryDTO employeeDTO = employee.updateEmployeeSalary();
         this.employeeRepository.save(employee);
 
+        DecimalFormat df = new DecimalFormat("0.00");
         Map<String, String> response = new LinkedHashMap<>();
         response.put("CPF",employeeDTO.getCpf());
-        response.put("Novo salario",String.valueOf(employeeDTO.getNewSalary()));
-        response.put("Reajuste ganho",String.valueOf(employeeDTO.getReadjustment()));
+        response.put("Novo salario",df.format(employeeDTO.getNewSalary()));
+        response.put("Reajuste ganho",df.format(employeeDTO.getReadjustment()));
         response.put("Em percentual",(employeeDTO.getPercent() + "%"));
 
 
@@ -85,9 +87,10 @@ public class EmployeeController {
 
         EmployeeIncomeTaxDTO employeeDTO = employee.calculateIncomeTax();
 
+        DecimalFormat df = new DecimalFormat("0.00");
         Map<String,String> response = new LinkedHashMap<>();
         response.put("CPF",employeeDTO.getCpf());
-        response.put(employeeDTO.getIncomeTax() == 0 ? "Isento" : "Imposto",employeeDTO.getIncomeTax() == 0 ? "" : "R$ " + employeeDTO.getIncomeTax());
+        response.put(employeeDTO.getIncomeTax() == 0 ? "Isento" : "Imposto",employeeDTO.getIncomeTax() == 0 ? "" : "R$ " + df.format(employeeDTO.getIncomeTax()));
 
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
