@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employees")
 public class Employee {
-    //Nome, CPF, Data de Nascimento, Telefone, Endereço e o Salario.
+    //Nome, CPF, Data de Nascimento, Telefone, Endereço e Salario.
     @Id
     @Column(unique = true)
     private String cpf;
@@ -51,40 +51,20 @@ public class Employee {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getBornDate() {
         return bornDate;
     }
 
-    public void setBornDate(String bornDate) {
-        this.bornDate = bornDate;
-    }
-
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public double getSalary() {

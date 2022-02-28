@@ -21,28 +21,6 @@ public class EmployeeControllerTest {
     Employee employee2 = new Employee("64758194782", "Alvaro", "10/01/1972", "82923446614", "Rio de Janeiro-RJ", 1000);
     Employee employee3 = new Employee("16483927495", "Renata", "05/04/1970", "83933667823", "São Paulo-SP", 3002);
     Employee employee4 = new Employee("25671847307","Tamyris","11/12/1992","11933445623","Garanhuns-PE",4000);
-    /*@Test
-    void getAllEmployee() {
-
-        List<Employee> employees = new ArrayList<>(Arrays.asList(employee1, employee2, employee3));
-
-        Mockito.when(employeeController.getAllEmployee()).thenReturn(employees);
-
-        List<Employee> actualEmployees = employeeController.getAllEmployee();
-
-        Assertions.assertEquals(employees.size(),actualEmployees.size());
-    }*/
-
-    /*@Test
-    void getEmployeeByCpfTest() throws EmployeeNotFoundException {
-
-        Mockito.when(employeeRepository.findById(employee1.getCpf())).thenReturn(Optional.of(employee1));
-
-        Employee actualEmployee = employeeController.getEmployeeByCpf(employee1.getCpf()).getBody();
-
-        assert actualEmployee != null;
-        Assertions.assertEquals(employee1.getCpf(),actualEmployee.getCpf());
-    }*/
 
     @Test
     void updateSalaryTest() throws EmployeeNotFoundException {

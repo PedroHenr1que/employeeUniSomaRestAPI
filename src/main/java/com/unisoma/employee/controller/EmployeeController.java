@@ -33,17 +33,7 @@ public class EmployeeController {
         return this.employeeRepository.findAll();
     }
 
-    /*// get employee by cpf
-    @GetMapping("employees/{cpf}")
-    public ResponseEntity<Employee> getEmployeeByCpf(@PathVariable(value = "cpf") String employeeCpf)
-            throws EmployeeNotFoundException {
-
-        Employee employee = employeeRepository.findById(employeeCpf)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found for this cpf :: " + employeeCpf));
-        return ResponseEntity.ok().body(employee);
-    }*/
-
-    // save employee
+    // create employee
     @PostMapping("employees/register")
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) throws EmployeeAlreadyExistException {
 
@@ -76,7 +66,7 @@ public class EmployeeController {
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
-    // get IR
+    // get IT
     @GetMapping("employees/incomeTax/{cpf}")
     public ResponseEntity<Map<String,String>> getIncomeTax(@PathVariable(value = "cpf") String employeeCpf)
             throws EmployeeNotFoundException {
@@ -94,17 +84,4 @@ public class EmployeeController {
 
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
-
-    /*// delete employee
-    @DeleteMapping("employees/delete/{cpf}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "cpf") String employeeCpf) throws EmployeeNotFoundException {
-        Employee employee = employeeRepository.findById(employeeCpf)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found for this cpf :: " + employeeCpf));
-
-        this.employeeRepository.delete(employee);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-
-        return response;
-    }*/
 }
